@@ -20,7 +20,8 @@ Set-Alias -Name pcg -Value PowerColorGit -Option AllScope
 
 Import-Module oh-my-posh
 # Set-PoshPrompt -Theme PowerLine
-Set-PoshPrompt -Theme ~/.ohmyposhv3-will.omp.json
+# Set-PoshPrompt -Theme ~/.ohmyposhv3-will.omp.json
+Set-PoshPrompt -Theme ~/Documents/PowerShell/jandedobbeleer.omp.json
 
 Import-Module DockerCompletion
 Import-Module Get-ChildItemColor
