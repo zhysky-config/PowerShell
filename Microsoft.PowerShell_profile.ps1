@@ -20,8 +20,7 @@ Set-Alias -Name pcg -Value PowerColorGit -Option AllScope
 
 Import-Module oh-my-posh
 # Set-PoshPrompt -Theme PowerLine
-# Set-PoshPrompt -Theme ~/.ohmyposhv3-will.omp.json
-Set-PoshPrompt -Theme ~/Documents/PowerShell/jandedobbeleer.omp.json
+Set-PoshPrompt -Theme ~/Documents/PowerShell/zhysky.omp.json
 
 Import-Module DockerCompletion
 Import-Module Get-ChildItemColor
@@ -271,4 +270,23 @@ Set-PSReadLineKeyHandler -Key Backspace `
 #                   New-Object -Type System.Management.Automation.CompletionResult -ArgumentList $_.Name
 #               }
 #       }
+# }
+
+# function AddToPath {
+#     param (
+#         [string]$folder
+#     )
+
+#     Write-Host "Adding $folder to environment variables..." -ForegroundColor Yellow
+
+#     $currentEnv = [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine).Trim(";");
+#     $addedEnv = $currentEnv + ";$folder"
+#     $trimmedEnv = (($addedEnv.Split(';') | Select-Object -Unique) -join ";").Trim(";")
+#     [Environment]::SetEnvironmentVariable(
+#         "Path",
+#         $trimmedEnv,
+#         [EnvironmentVariableTarget]::Machine)
+
+#     #Write-Host "Reloading environment variables..." -ForegroundColor Green
+#     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 # }
