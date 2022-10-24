@@ -15,3 +15,6 @@ settings.json 是 Windows Terminal 的配置文件 C:\Users\KH\AppData\Local\Pac
 ## oh-my-posh 需要 v6.51.0
 
 `Install-Module -Name oh-my-posh -RequiredVersion 6.51.0`
+
+
+历史记录在C:\Users\YUKI\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine
