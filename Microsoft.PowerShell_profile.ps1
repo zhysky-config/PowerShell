@@ -290,3 +290,7 @@ Set-PSReadLineKeyHandler -Key Backspace `
 #     #Write-Host "Reloading environment variables..." -ForegroundColor Green
 #     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 # }
+
+fnm env --use-on-cd | Out-String | Invoke-Expression
+$env:FNM_DIR = "C:\Softwares\004\fnm"
+$env:FNM_VERSION_FILE_STRATEGY = "recursive"
