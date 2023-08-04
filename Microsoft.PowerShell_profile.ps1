@@ -279,11 +279,36 @@ Set-PSReadLineKeyHandler -Key Backspace `
 # }
 
 fnm env --use-on-cd | Out-String | Invoke-Expression
-$env:FNM_DIR = "C:\Softwares\004\fnm"
-$env:FNM_VERSION_FILE_STRATEGY = "recursive"
+# $env:FNM_DIR = "C:\Software\004\fnm"
+# $env:FNM_VERSION_FILE_STRATEGY = "recursive"
 
 
 
 # Import-Module posh-git
 # oh-my-posh init pwsh --config ~/.powerlevel10k_rainbow.omp.json | Invoke-Expression
 # Import-Module -Name Terminal-Icons
+
+# Import the Chocolatey Profile that contains the necessary code to enable
+# tab-completions to function for `choco`.
+# Be aware that if you are missing these lines from your profile, tab completion
+# for `choco` will not function.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
+
+Set-Alias -Name make -Value C:/Software/004/msys2/mingw64/bin/mingw32-make.exe -Option AllScope
+
+
+
+Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+    param($wordToComplete, $commandAst, $cursorPosition)
+        [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+        $Local:word = $wordToComplete.Replace('"', '""')
+        $Local:ast = $commandAst.ToString().Replace('"', '""')
+        winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+        }
+}
